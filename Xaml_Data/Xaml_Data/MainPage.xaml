@@ -8,6 +8,23 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <GridView Name="BookItemGrid">                 
+       
+        <GridView.ItemTemplate>
+        <DataTemplate x:DataType="local:BookItem">
+        <Grid Background="White" Margin="10" Height="270" Width="200">
+        <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Name="MyImage" Source="{x:Bind Image}"/>
+        <StackPanel Grid.Row="1" Margin="10">
+        <TextBlock Text="{x:Bind Name}" Name="NameTxt"  FontSize="18" TextWrapping="Wrap"/>
+        <TextBlock Text="{x:Bind Author}" Name="AuthorTxt"  TextWrapping="Wrap"/>
+        </StackPanel>
+        </Grid>
+        </DataTemplate>
+        </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>

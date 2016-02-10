@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -16,15 +17,37 @@ using Windows.UI.Xaml.Navigation;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace Xaml_Data
-{
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+{    
+
     public sealed partial class MainPage : Page
+
+
     {
+
+        private ObservableCollection<BookItem> bookItems_;
+        private ObservableCollection<BookItem> BookItems
+
+        {
+            get
+            {
+                return bookItems_;
+            }
+
+            set
+            {
+                bookItems_ = value;
+            }
+        }
+
         public MainPage()
+
         {
             this.InitializeComponent();
+            bookItems_ = BookItem.BooksList();
+            this.DataContext = BookItems;
         }
+
+
     }
 }
+
